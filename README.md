@@ -1,11 +1,10 @@
-# octokit.js
+# octokit.js.undispatch
 
 > The all-batteries-included GitHub SDK for Browsers, Node.js, and Deno.
 
 The `octokit` package integrates the three main Octokit libraries
 
-1. **API client** (REST API requests, GraphQL API queries, Authentication)
-2. **App client** (GitHub App & installations, Webhooks, OAuth)
+1. **API client** (REST API requests, GraphQL API queries, lient** (GitHub App & installations, Webhooks, OAuth)
 3. **Action client** (Pre-authenticated API client for single repository)
 
 ## Table of contents <!-- omit in toc -->
@@ -43,66 +42,10 @@ The `octokit` package integrates the three main Octokit libraries
 ## Features
 
 - **Complete**. All features of GitHub's platform APIs are covered.
-- **Prescriptive**. All recommended best practices are implemented.
-- **Universal**. Works in all modern browsers, [Node.js](https://nodejs.org/), and [Deno](https://deno.land/).
+-
 - **Tested**. All libraries have a 100% test coverage.
 - **Typed**. All libraries have extensive TypeScript declarations.
-- **Decomposable**. Use only the code you need. You can build your own Octokit in only a few lines of code or use the underlying static methods. Make your own tradeoff between functionality and bundle size.
-- **Extendable**. A feature missing? Add functionalities with plugins, hook into the request or webhook lifecycle or implement your own authentication strategy.
-
-## Usage
-
-<table>
-<tbody valign=top align=left>
-<tr><th>
-Browsers
-</th><td width=100%>
-Load <code>octokit</code> directly from <a href="https://esm.sh">esm.sh</a>
-        
-```html
-<script type="module">
-import { Octokit, App } from "https://esm.sh/octokit";
-</script>
-```
-
-</td></tr>
-<tr><th>
-Deno
-</th><td width=100%>
-Load <code>octokit</code> directly from <a href="https://esm.sh">esm.sh</a>
-        
-```ts
-import { Octokit, App } from "https://esm.sh/octokit?dts";
-```
-
-</td></tr>
-<tr><th>
-Node
-</th><td>
-
-Install with <code>npm/pnpm install octokit</code>, or <code>yarn add octokit</code>
-
-```js
-import { Octokit, App } from "octokit";
-```
-
-</td></tr>
-</tbody>
-</table>
-
-> [!IMPORTANT]
-> As we use [conditional exports](https://nodejs.org/api/packages.html#conditional-exports), you will need to adapt your `tsconfig.json` by setting `"moduleResolution": "node16", "module": "node16"`.
->
-> See the TypeScript docs on [package.json "exports"](https://www.typescriptlang.org/docs/handbook/modules/reference.html#packagejson-exports).<br>
-> See this [helpful guide on transitioning to ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) from [@sindresorhus](https://github.com/sindresorhus)
-
-## `Octokit` API Client
-
-**standalone minimal Octokit**: [`@octokit/core`](https://github.com/octokit/core.js/#readme).
-
-The `Octokit` client can be used to send requests to [GitHub's REST API](https://docs.github.com/rest/) and queries to [GitHub's GraphQL API](https://docs.github.com/graphql).
-
-**Example**: Get the username for the authenticated user.
+- **Decomposable**. Use only the e for the authenticated user.
 
 ```js
 // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
@@ -115,25 +58,7 @@ const {
 console.log("Hello, %s", login);
 ```
 
-### Constructor options
-
-The most commonly used options are
-
-<table>
-  <thead align=left>
-    <tr>
-      <th>
-        name
-      </th>
-      <th>
-        type
-      </th>
-      <th width=100%>
-        description
-      </th>
-    </tr>
-  </thead>
-  <tbody align=left valign=top>
+### Constructor 
     <tr>
       <th>
         <code>userAgent</code>
@@ -143,45 +68,7 @@ The most commonly used options are
       </td>
       <td>
 
-Setting a user agent is required for all requests sent to GitHub's Platform APIs. The user agent defaults to something like this: `octokit.js/v1.2.3 Node.js/v8.9.4 (macOS High Sierra; x64)`. It is recommend to set your own user agent, which will prepend the default one.
-
-```js
-const octokit = new Octokit({
-  userAgent: "my-app/v1.2.3",
-});
-```
-
-</td>
-    </tr>
-    <tr>
-      <th>
-        <code>authStrategy</code>
-      </th>
-      <td>
-        <code>Function</code>
-      </td>
-      <td>
-
-Defaults to [`@octokit/auth-token`](https://github.com/octokit/auth-token.js#readme).
-
-See [Authentication](#authentication) below.
-
-</td>
-    </tr>
-    <tr>
-      <th>
-        <code>auth</code>
-      </th>
-      <td>
-        <code>String</code> or <code>Object</code>
-      </td>
-      <td>
-
-Set to a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) unless you changed the `authStrategy` option.
-
-See [Authentication](#authentication) below.
-
-</td>
+Setting a user agent is required for all requests sent to GitHub's Platform APIs. The user agent defaults to something like this: `octokit.js/v1.2.3 Node.js/v8.9.4 (macOS High Sierra; x64)`. It is recommend to set 
     </tr>
     <tr>
       <th>
@@ -200,32 +87,7 @@ const octokit = new Octokit({
 });
 ```
 
-</td>
-    </tr>
-  </tbody>
-</table>
 
-Advanced options
-
-<table>
-  <thead align=left>
-    <tr>
-      <th>
-        name
-      </th>
-      <th>
-        type
-      </th>
-      <th width=100%>
-        description
-      </th>
-    </tr>
-  </thead>
-  <tbody align=left valign=top>
-    <tr>
-      <th>
-        <code>request</code>
-      </th>
       <td>
         <code>Object</code>
       </td>
